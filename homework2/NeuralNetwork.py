@@ -6,7 +6,7 @@ import numpy as numpy
 import os
 
 errorForPlottingGraphList, accuracyScoreForGraph = [], []
-numberOfSamples, numOfEpochs = 0, 300
+numberOfSamples, numOfEpochs = 0, 200
 
 #Will take derivative of relu
 def inplace_relu_derivative(someOutput):
@@ -34,7 +34,7 @@ def backPropagation(input, OOutput, truePrediction, binarizedTruePrediction, h1O
     #derivative of cross entropy wrt bias3
     biasDelta3 = numpy.copy(delta_temp_output)
 
-    #deruvative of cross entropy wrt bias2
+    #derivative of cross entropy wrt bias2
     bias_delta_temp_second_hidden_layer = numpy.dot(delta_temp_output, numpy.repeat(numpy.array([bias[2]]), repeats = [numberOfNeuronsInLayers[2]], axis = 0).transpose())
     biasDelta2 = numpy.multiply(bias_delta_temp_second_hidden_layer, inplaceReluDerivativeOfh2)
 
@@ -164,3 +164,4 @@ if __name__ == "__main__":
             start += 5000
 
     makePrediction(trainingDataPath, testingDataPath, weights, bias, numberOfNeuronsInLayers, classes, blackBoxNumber, optimizer)
+
